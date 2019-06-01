@@ -1,0 +1,42 @@
+{
+    "name": "phpviet/number-to-words",
+    "type": "library",
+    "description": "Thư viện hổ trợ chuyển đổi số sang chữ số.",
+    "keywords": [
+        "phpviet",
+        "number-to-words"
+    ],
+    "homepage": "https://github.com/phpviet/number-to-words",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vuong Xuong Minh",
+            "email": "vuongxuongminh@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~7.5",
+        "scrutinizer/ocular": "^1.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "PHPViet\\NumberToWords\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PHPViet\\NumberToWords\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+	}
+}
