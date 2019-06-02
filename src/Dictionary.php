@@ -21,7 +21,7 @@ class Dictionary implements DictionaryInterface
      * @var array
      */
     protected static $tripletUnits = [
-        '',
+        'không',
         'một',
         'hai',
         'ba',
@@ -77,7 +77,7 @@ class Dictionary implements DictionaryInterface
      */
     public function zero(): string
     {
-        return 'không';
+        return static::$tripletUnits[0];
     }
 
     /**
@@ -142,7 +142,7 @@ class Dictionary implements DictionaryInterface
     public function getTripletUnit(int $unit): string
     {
         if (!isset(static::$tripletUnits[$unit])) {
-            throw new InvalidArgumentException('`unit` arg must be in 0-9 range!');
+            throw new InvalidArgumentException(sprintf('Unit arg (`%s`) must be in 0-9 range!', $unit));
         }
 
         return static::$tripletUnits[$unit];
@@ -154,7 +154,7 @@ class Dictionary implements DictionaryInterface
     public function getTripletTen(int $ten): string
     {
         if (!isset(static::$tripletTens[$ten])) {
-            throw new InvalidArgumentException('`ten` arg must be in 0-9 range!');
+            throw new InvalidArgumentException(sprintf('Ten arg (`%s`) must be in 0-9 range!', $ten));
         }
 
         return static::$tripletTens[$ten];
@@ -166,7 +166,7 @@ class Dictionary implements DictionaryInterface
     public function getTripletHundred(int $hundred): string
     {
         if (!isset(static::$tripletUnits[$hundred])) {
-            throw new InvalidArgumentException('`hundred` arg must be in 0-9 range!');
+            throw new InvalidArgumentException(sprintf('Hundred arg (`%s`) must be in 0-9 range!', $hundred));
         }
 
         return static::$tripletUnits[$hundred] . $this->separator() . static::$hundred;
@@ -178,7 +178,7 @@ class Dictionary implements DictionaryInterface
     public function getExponent(int $power): string
     {
         if (!isset(static::$exponents[$power])) {
-            throw new InvalidArgumentException('`power` arg not exist in vietnamese dictionary!');
+            throw new InvalidArgumentException(sprintf('Power arg (`%s`) not exist in vietnamese dictionary!', $power));
         }
 
         return static::$exponents[$power];

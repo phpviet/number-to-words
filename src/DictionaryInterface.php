@@ -94,7 +94,7 @@ interface DictionaryInterface
     public function getTripletHundred(int $hundred): string;
 
     /**
-     * Trả về đơn vị tương ứng với số mũ.
+     * Trả về đơn vị tương ứng với số mũ cơ số 3.
      *
      * @param int $power hàng trăm
      * @return string
