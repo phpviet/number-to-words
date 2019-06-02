@@ -27,7 +27,7 @@ class Transformer
     private $dictionary;
 
     /**
-     * Tạo đối tượng NumberToWords với từ điển chỉ định.
+     * Tạo đối tượng mới với từ điển chỉ định.
      *
      * @param DictionaryInterface $dictionary
      */
@@ -86,7 +86,7 @@ class Transformer
      * Chuyển đổi số sang chữ số kết hợp với đơn vị tiền tệ.
      *
      * @param $number
-     * @param string $unit
+     * @param array|string[]|string $unit
      * @return string
      */
     public function toCurrency($number, $unit = 'đồng'): string
