@@ -27,45 +27,31 @@ trait TripletTransformer
      * Chuyển đổi cụm 3 số thành chữ số.
      *
      * @param int $triplet
+     * @param bool $isFirst
      * @param int $exponent
      * @return string
      */
-    protected function tripletToWords(int $triplet, int $exponent): string
+    protected function tripletToWords(int $triplet, bool $isFirst, int $exponent): string
     {
         $words = [];
         [$hundred, $ten, $unit] = $this->splitTriplet($triplet);
         $dictionary = $this->getDictionary();
 
-        if (0 < $hundred || 0 < $exponent) {
+        if (0 < $hundred || !$isFirst) {
             $words[] = $dictionary->getTripletHundred($hundred);
-        }
 
-        if (0 === $ten && 0 < $unit && 0 < $hundred) {
-            $words[] = $dictionary->tripletTenSeparator();
-        }
-
-        if (0 < $ten || 0 < $unit) {
-            $words[] = $dictionary->getTripletTen($ten);
-
-            switch ($unit) {
-                case 1:
-                    if (2 <= $ten) {
-                        $words[] = $dictionary->specialTripletUnitOne();
-                    }
-                    break;
-                case 4:
-                    if (2 <= $ten) {
-                        $words[] = $dictionary->specialTripletUnitFour();
-                    }
-                    break;
-                case 5:
-                    if (1 <= $ten) {
-                        $words[] = $dictionary->specialTripletUnitFive();
-                    }
-                    break;
-                default:
-                    $words[] = $dictionary->getTripletUnit($unit);
+            if (0 === $ten && 0 < $unit) {
+                $words[] = $dictionary->tripletTenSeparator();
             }
+
+        }
+
+        if (0 < $ten) {
+            $words[] = $dictionary->getTripletTen($ten);
+        }
+
+        if (0 < $unit) {
+            $words[] = $this->getTripletUnit($unit, $ten);
         }
 
         $words[] = $dictionary->getExponent($exponent);
@@ -87,5 +73,34 @@ trait TripletTransformer
 
         return [$hundred, $ten, $unit];
     }
+
+    /**
+     * Chuyển đổi số hàng đơn vị sang chữ số ở một số trường hợp đặc biệt.
+     *
+     * @param int $unit
+     * @param int $ten
+     * @return null|string
+     */
+    private function getTripletUnit(int $unit, int $ten): string
+    {
+        $dictionary = $this->getDictionary();
+
+        if (2 <= $ten) {
+            if (1 === $unit) {
+                return $dictionary->specialTripletUnitOne();
+            }
+
+            if (4 === $unit) {
+                return $dictionary->specialTripletUnitFour();
+            }
+        }
+
+        if (1 <= $ten && 5 === $unit) {
+            return $dictionary->specialTripletUnitFive();
+        }
+
+        return $dictionary->getTripletUnit($unit);
+    }
+
 
 }
