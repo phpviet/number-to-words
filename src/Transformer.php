@@ -15,7 +15,7 @@ use PHPViet\NumberToWords\Concerns\TripletTransformer;
  * @author Vuong Minh <vuongxuongminh@gmail.com>
  * @since 1.0.0
  */
-class NumberToWords
+class Transformer
 {
 
     use TripletsConverter;
@@ -46,10 +46,10 @@ class NumberToWords
      * @param int|float|string $number
      * @return string
      */
-    public function transform($number): string
+    public function toWords($number): string
     {
         if (!is_numeric($number)) {
-            throw new InvalidArgumentException('`number` arg must be numeric!');
+            throw new InvalidArgumentException(sprintf('Number arg (`%s`) must be numeric!', $number));
         }
 
         $words = [];
@@ -64,13 +64,46 @@ class NumberToWords
             $number = abs($number);
         }
 
-        foreach ($this->numberToTriplets($number) as $pos => $triplet) {
-            $words[] = $this->tripletToWords($triplet, count($triplet) - $pos);
+        $triplets = $this->numberToTriplets($number);
+
+        foreach ($triplets as $pos => $triplet) {
+
+            if ($triplet > 0) {
+                $words[] = $this->tripletToWords($triplet, 0 === $pos, count($triplets) - $pos - 1);
+            }
+
         }
 
         if ($decimal > 0) {
             $words[] = $this->dictionary->fraction();
-            $words[] = $this->transform($decimal);
+            $words[] = $this->toWords($decimal);
+        }
+
+        return implode($this->dictionary->separator(), array_filter($words));
+    }
+
+    /**
+     * Chuyển đổi số sang chữ số kết hợp với đơn vị tiền tệ.
+     *
+     * @param $number
+     * @param string $unit
+     * @return string
+     */
+    public function toCurrency($number, $unit = 'đồng'): string
+    {
+        $words = [];
+        $originNumber = $number;
+        [$number, $decimal] = $this->resolve($number);
+
+        if (is_string($unit) || 0 === $decimal) {
+            $words[] = $this->toWords($originNumber);
+            $words[] = is_array($unit) ? $unit[0] : $unit;
+        } else {
+            [$unit, $decimalUnit] = $unit;
+            $words[] = $this->toWords($number);
+            $words[] = $unit;
+            $words[] = $this->toWords($decimal);
+            $words[] = $decimalUnit;
         }
 
         return implode($this->dictionary->separator(), array_filter($words));
