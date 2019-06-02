@@ -142,7 +142,7 @@ class Dictionary implements DictionaryInterface
     public function getTripletUnit(int $unit): string
     {
         if (!isset(static::$tripletUnits[$unit])) {
-            throw new InvalidArgumentException('`ten` arg must be in 0-9 range!');
+            throw new InvalidArgumentException('`unit` arg must be in 0-9 range!');
         }
 
         return static::$tripletUnits[$unit];
