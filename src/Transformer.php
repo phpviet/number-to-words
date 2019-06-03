@@ -68,13 +68,13 @@ class Transformer
 
         foreach ($triplets as $pos => $triplet) {
 
-            if ($triplet > 0) {
+            if (0 < $triplet) {
                 $words[] = $this->tripletToWords($triplet, 0 === $pos, count($triplets) - $pos - 1);
             }
 
         }
 
-        if ($decimal > 0) {
+        if (0 < $decimal) {
             $words[] = $this->dictionary->fraction();
             $words[] = $this->toWords($decimal);
         }
@@ -117,10 +117,11 @@ class Transformer
      */
     protected function resolve($number): array
     {
+        $number += 0; // trick xóa các số 0 lẻ sau cùng của phân số
         $number = (string)$number;
 
         if (false !== strpos($number, '.')) {
-            $result = explode($number, '.', 2);
+            $result = explode('.', $number, 2);
         } else {
             $result = [$number, 0];
         }
