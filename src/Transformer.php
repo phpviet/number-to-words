@@ -90,11 +90,12 @@ class Transformer
     {
         $words = [];
         $originNumber = $number;
+        $unit = (array) $unit;
         [$number, $decimal] = $this->resolve($number);
 
-        if (is_string($unit) || 0 === $decimal) {
+        if (0 === $decimal || ! isset($unit[1])) {
             $words[] = $this->toWords($originNumber);
-            $words[] = is_array($unit) ? $unit[0] : $unit;
+            $words[] = $unit[0];
         } else {
             [$unit, $decimalUnit] = $unit;
             $words[] = $this->toWords($number);
