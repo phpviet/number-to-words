@@ -23,7 +23,7 @@ class SouthDictionary extends Dictionary
         'ngàn',
         'triệu',
         'tỷ',
-        'nghìn tỷ',
+        'ngàn tỷ',
         'triệu tỷ',
     ];
 
