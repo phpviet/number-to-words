@@ -17,7 +17,6 @@ use PHPViet\NumberToWords\Concerns\TripletTransformer;
  */
 class Transformer
 {
-
     use TripletsConverter;
     use TripletTransformer;
 
@@ -48,7 +47,7 @@ class Transformer
      */
     public function toWords($number): string
     {
-        if (!is_numeric($number)) {
+        if (! is_numeric($number)) {
             throw new InvalidArgumentException(sprintf('Number arg (`%s`) must be numeric!', $number));
         }
 
@@ -67,11 +66,9 @@ class Transformer
         $triplets = $this->numberToTriplets($number);
 
         foreach ($triplets as $pos => $triplet) {
-
             if (0 < $triplet) {
                 $words[] = $this->tripletToWords($triplet, 0 === $pos, count($triplets) - $pos - 1);
             }
-
         }
 
         if (0 < $decimal) {
@@ -118,7 +115,7 @@ class Transformer
     protected function resolve($number): array
     {
         $number += 0; // trick xóa các số 0 lẻ sau cùng của phân số
-        $number = (string)$number;
+        $number = (string) $number;
 
         if (false !== strpos($number, '.')) {
             $result = explode('.', $number, 2);
@@ -130,12 +127,10 @@ class Transformer
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     protected function getDictionary(): DictionaryInterface
     {
         return $this->dictionary;
     }
-
 }
-

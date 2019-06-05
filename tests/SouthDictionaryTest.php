@@ -17,7 +17,6 @@ use PHPUnit\Framework\TestCase as BaseTestCase;
  */
 class SouthDictionaryTest extends BaseTestCase
 {
-
     /**
      * @dataProvider dataProvider
      */
@@ -129,7 +128,7 @@ class SouthDictionaryTest extends BaseTestCase
             ['sáu mươi ngàn năm trăm lẻ ba', 60503],
             ['ba mươi lăm ngàn hai trăm chín mươi bốn', 35294],
             ['tám mươi tám ngàn bốn trăm hai mươi bảy', 88427],
-            ['sáu trăm năm mươi ngàn sáu trăm bảy mươi ba', 650673]
+            ['sáu trăm năm mươi ngàn sáu trăm bảy mươi ba', 650673],
         ];
     }
 }

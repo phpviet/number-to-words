@@ -13,7 +13,6 @@ namespace PHPViet\NumberToWords\Concerns;
  */
 trait TripletsConverter
 {
-
     /**
      * Chia số truyền vào thành các cụm gồm 3 số để hổ trợ cho việc chuyển sang chữ số.
      *
@@ -26,11 +25,9 @@ trait TripletsConverter
 
         while (0 < $number) {
             array_unshift($result, $number % 1000);
-            $number = (int)($number / 1000);
+            $number = (int) ($number / 1000);
         }
 
         return $result;
     }
-
-
 }
