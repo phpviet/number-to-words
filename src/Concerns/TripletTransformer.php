@@ -15,7 +15,6 @@ use PHPViet\NumberToWords\DictionaryInterface;
  */
 trait TripletTransformer
 {
-
     /**
      * Trả về từ điển hổ trợ cho việc chuyển đổi.
      *
@@ -37,13 +36,12 @@ trait TripletTransformer
         [$hundred, $ten, $unit] = $this->splitTriplet($triplet);
         $dictionary = $this->getDictionary();
 
-        if (0 < $hundred || !$isFirst) {
+        if (0 < $hundred || ! $isFirst) {
             $words[] = $dictionary->getTripletHundred($hundred);
 
             if (0 === $ten && 0 < $unit) {
                 $words[] = $dictionary->tripletTenSeparator();
             }
-
         }
 
         if (0 < $ten) {
@@ -67,8 +65,8 @@ trait TripletTransformer
      */
     private function splitTriplet(int $triplet): array
     {
-        $hundred = (int)($triplet / 100) % 10;
-        $ten = (int)($triplet / 10) % 10;
+        $hundred = (int) ($triplet / 100) % 10;
+        $ten = (int) ($triplet / 10) % 10;
         $unit = $triplet % 10;
 
         return [$hundred, $ten, $unit];
@@ -101,6 +99,4 @@ trait TripletTransformer
 
         return $dictionary->getTripletUnit($unit);
     }
-
-
 }

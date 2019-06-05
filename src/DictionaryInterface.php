@@ -100,5 +100,4 @@ interface DictionaryInterface
      * @return string
      */
     public function getExponent(int $power): string;
-
 }

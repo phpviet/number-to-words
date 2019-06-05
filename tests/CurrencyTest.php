@@ -13,7 +13,6 @@ namespace PHPViet\NumberToWords\Tests;
  */
 class CurrencyTest extends TestCase
 {
-
     /**
      * @dataProvider dataProvider
      */
@@ -132,10 +131,9 @@ class CurrencyTest extends TestCase
             ['bảy nghìn bốn trăm bốn mươi tư đô hai mươi sáu xen', 7444.26],
             ['một nghìn bốn trăm bảy mươi tư đô sáu xen', 1474.60],
             ['bảy nghìn bảy trăm bảy mươi đô', 7770],
-            ['ba nghìn bảy trăm chín mươi hai đô', 3792]
+            ['ba nghìn bảy trăm chín mươi hai đô', 3792],
         ];
     }
-
 
     public function dataProvider(): array
     {
@@ -238,7 +236,7 @@ class CurrencyTest extends TestCase
             ['năm triệu sáu trăm chín mươi nghìn bảy trăm đồng', 5690700],
             ['chín trăm mười bảy triệu bảy trăm đồng', 917000700],
             ['năm trăm nghìn bảy trăm đồng', 500700],
-            ['mười bảy triệu bảy trăm nghìn một trăm đồng', 17700100]
+            ['mười bảy triệu bảy trăm nghìn một trăm đồng', 17700100],
         ];
     }
 }

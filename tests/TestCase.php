@@ -16,7 +16,6 @@ use PHPUnit\Framework\TestCase as BaseTestCase;
  */
 class TestCase extends BaseTestCase
 {
-
     /**
      * @var \PHPViet\NumberToWords\DictionaryInterface
      */
@@ -31,5 +30,4 @@ class TestCase extends BaseTestCase
     {
         $this->transformer = new Transformer($this->dictionary);
     }
-
 }

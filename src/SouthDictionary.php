@@ -13,7 +13,6 @@ namespace PHPViet\NumberToWords;
  */
 class SouthDictionary extends Dictionary
 {
-
     /**
      * Thay nghìn => ngàn.
      *
@@ -25,11 +24,11 @@ class SouthDictionary extends Dictionary
         'triệu',
         'tỷ',
         'nghìn tỷ',
-        'triệu tỷ'
+        'triệu tỷ',
     ];
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function tripletTenSeparator(): string
     {
@@ -37,11 +36,10 @@ class SouthDictionary extends Dictionary
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function specialTripletUnitFour(): string
     {
         return 'bốn';
     }
-
 }

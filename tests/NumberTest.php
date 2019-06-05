@@ -13,7 +13,6 @@ namespace PHPViet\NumberToWords\Tests;
  */
 class NumberTest extends TestCase
 {
-
     /**
      * @dataProvider dataProvider
      */
@@ -140,7 +139,7 @@ class NumberTest extends TestCase
             ['năm trăm ba mươi phẩy tám trăm ba mươi sáu', 530.836],
             ['năm mươi lăm phẩy mười chín', 55.190],
             ['hai trăm tám mươi chín phẩy sáu trăm ba mươi mốt', 289.631],
-            ['năm trăm linh một phẩy bảy trăm mười bốn', 501.714]
+            ['năm trăm linh một phẩy bảy trăm mười bốn', 501.714],
         ];
     }
 
@@ -246,7 +245,7 @@ class NumberTest extends TestCase
             ['âm ba', -3],
             ['âm hai', -2],
             ['âm một', -1],
-            ['không', 0]
+            ['không', 0],
         ];
     }
 
@@ -375,7 +374,7 @@ class NumberTest extends TestCase
             ['một tỷ không trăm bảy mươi sáu', 1000000076],
             ['một tỷ không trăm bảy mươi bảy', 1000000077],
             ['một tỷ không trăm bảy mươi tám', 1000000078],
-            ['một tỷ không trăm bảy mươi chín', 1000000079]
+            ['một tỷ không trăm bảy mươi chín', 1000000079],
         ];
     }
 }
