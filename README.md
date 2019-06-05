@@ -11,7 +11,7 @@ Thư viện hổ trợ chuyển đổi số sang chữ số Tiếng Việt.
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/phpviet/number-to-words.svg?style=flat-square)](https://packagist.org/packages/phpviet/number-to-words)
 [![Build Status](https://img.shields.io/travis/phpviet/number-to-words/master.svg?style=flat-square)](https://travis-ci.org/phpviet/number-to-words)
 [![Quality Score](https://img.shields.io/scrutinizer/g/phpviet/number-to-words.svg?style=flat-square)](https://scrutinizer-ci.com/g/phpviet/number-to-words)
-[![StyleCI](https://styleci.io/repos/50674062/shield?branch=master)](https://styleci.io/repos/50674062)
+[![StyleCI](https://styleci.io/repos/189439149/shield?branch=master)](https://styleci.io/repos/189439149)
 [![Total Downloads](https://img.shields.io/packagist/dt/phpviet/number-to-words.svg?style=flat-square)](https://packagist.org/packages/phpviet/number-to-words)
 
 ## Cài đặt
