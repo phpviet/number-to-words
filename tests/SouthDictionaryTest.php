@@ -26,7 +26,7 @@ class SouthDictionaryTest extends BaseTestCase
         $this->assertEquals($expect, $transformer->toWords($number));
     }
 
-    public function dataProvider()
+    public function dataProvider(): array
     {
         return [
             ['chín trăm sáu mươi ngàn bốn trăm chín mươi lăm', 960495],
