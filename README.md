@@ -116,7 +116,7 @@ $transformer->toCurrency(854000900);
 ```
 
 Ngoài ra ta còn có thể sử dụng đơn vị tiền tệ khác thông qua tham trị thứ 2 của phương thức
-`toCurrency` với mảng phần từ đầu tiên là đơn vị cho số nguyên và kế tiếp là đơn vị của phân số:
+`toCurrency`, với mảng phần từ đầu tiên là đơn vị cho số nguyên và kế tiếp là đơn vị của phân số:
 
 ```php
 

@@ -41,6 +41,7 @@ class NumberTest extends TestCase
     {
         return [
             ['không', 0],
+            ['âm không phẩy một', -0.1],
             ['không phẩy ba trăm bảy mươi tám nghìn bảy trăm năm mươi tám', 0.378758],
             ['không phẩy chín trăm hai mươi chín nghìn một trăm bảy mươi tư', 0.929174],
             ['không phẩy sáu trăm sáu mươi nghìn bảy trăm tám mươi tư', 0.660784],

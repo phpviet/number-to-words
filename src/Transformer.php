@@ -23,7 +23,7 @@ class Transformer
     /**
      * @var DictionaryInterface
      */
-    private $dictionary;
+    protected $dictionary;
 
     /**
      * Tạo đối tượng mới với từ điển chỉ định.
@@ -52,17 +52,13 @@ class Transformer
         }
 
         $words = [];
-        [$number, $decimal] = $this->resolve($number);
+        [$minus, $number, $decimal] = $this->resolve($number);
+        $words[] = $minus ? $this->dictionary->minus() : '';
 
         if (0 === $number && 0 === $decimal) {
             return $this->dictionary->zero();
         } elseif (0 === $number) {
             $words[] = $this->dictionary->zero();
-        }
-
-        if (0 > $number) {
-            $words[] = $this->dictionary->minus();
-            $number = abs($number);
         }
 
         $triplets = $this->numberToTriplets($number);
@@ -78,7 +74,7 @@ class Transformer
             $words[] = $this->toWords($decimal);
         }
 
-        return implode($this->dictionary->separator(), $words);
+        return implode($this->dictionary->separator(), array_filter($words));
     }
 
     /**
@@ -93,40 +89,42 @@ class Transformer
         $words = [];
         $originNumber = $number;
         $unit = (array)$unit;
-        [$number, $decimal] = $this->resolve($number);
+        [$minus, $number, $decimal] = $this->resolve($number);
 
         if (0 === $decimal || !isset($unit[1])) {
             $words[] = $this->toWords($originNumber);
             $words[] = $unit[0];
         } else {
             [$unit, $decimalUnit] = $unit;
+            $words[] = $minus ? $this->dictionary->minus() : '';
             $words[] = $this->toWords($number);
             $words[] = $unit;
             $words[] = $this->toWords($decimal);
             $words[] = $decimalUnit;
         }
 
-        return implode($this->dictionary->separator(), $words);
+        return implode($this->dictionary->separator(), array_filter($words));
     }
 
     /**
-     * Chia số truyền vào thành mảng bao gồm số nguyên và phân số.
+     * Chia số truyền vào thành mảng bao gồm kiểu số âm hoặc dương, số nguyên và phân số.
      *
      * @param int|float|string $number
-     * @return array|int[]
+     * @return array
      */
     protected function resolve($number): array
     {
         $number += 0; // trick xóa các số 0 lẻ sau cùng của phân số
         $number = (string)$number;
+        $minus = '-' === $number[0];
 
         if (false !== strpos($number, '.')) {
-            $result = explode('.', $number, 2);
+            $numbers = explode('.', $number, 2);
         } else {
-            $result = [$number, 0];
+            $numbers = [$number, 0];
         }
 
-        return array_map('intval', $result);
+        return array_merge([$minus], array_map('abs', $numbers));
     }
 
     /**
