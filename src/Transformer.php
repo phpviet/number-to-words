@@ -88,7 +88,7 @@ class Transformer
     {
         $words = [];
         $originNumber = $number;
-        $unit = (array)$unit;
+        $unit = (array) $unit;
         [$minus, $number, $decimal] = $this->resolve($number);
 
         if (0 === $decimal || ! isset($unit[1])) {
@@ -115,7 +115,7 @@ class Transformer
     protected function resolve($number): array
     {
         $number += 0; // trick xóa các số 0 lẻ sau cùng của phân số
-        $number = (string)$number;
+        $number = (string) $number;
         $minus = '-' === $number[0];
 
         if (false !== strpos($number, '.')) {
