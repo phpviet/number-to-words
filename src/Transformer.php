@@ -47,7 +47,7 @@ class Transformer
      */
     public function toWords($number): string
     {
-        if (!is_numeric($number)) {
+        if (! is_numeric($number)) {
             throw new InvalidArgumentException(sprintf('Number arg (`%s`) must be numeric!', $number));
         }
 
@@ -92,10 +92,10 @@ class Transformer
     {
         $words = [];
         $originNumber = $number;
-        $unit = (array)$unit;
+        $unit = (array) $unit;
         [$number, $decimal] = $this->resolve($number);
 
-        if (0 === $decimal || !isset($unit[1])) {
+        if (0 === $decimal || ! isset($unit[1])) {
             $words[] = $this->toWords($originNumber);
             $words[] = $unit[0];
         } else {
@@ -118,7 +118,7 @@ class Transformer
     protected function resolve($number): array
     {
         $number += 0; // trick xóa các số 0 lẻ sau cùng của phân số
-        $number = (string)$number;
+        $number = (string) $number;
 
         if (false !== strpos($number, '.')) {
             $result = explode('.', $number, 2);
