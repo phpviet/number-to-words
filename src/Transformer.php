@@ -47,12 +47,8 @@ class Transformer
      */
     public function toWords($number): string
     {
-        if (! is_numeric($number)) {
-            throw new InvalidArgumentException(sprintf('Number arg (`%s`) must be numeric!', $number));
-        }
-
-        $words = [];
         [$minus, $number, $decimal] = $this->resolve($number);
+        $words = [];
         $words[] = $minus ? $this->dictionary->minus() : '';
 
         if (0 === $number && 0 === $decimal) {
@@ -86,10 +82,10 @@ class Transformer
      */
     public function toCurrency($number, $unit = 'đồng'): string
     {
-        $words = [];
-        $originNumber = $number;
         $unit = (array) $unit;
+        $originNumber = $number;
         [$minus, $number, $decimal] = $this->resolve($number);
+        $words = [];
 
         if (0 === $decimal || ! isset($unit[1])) {
             $words[] = $this->toWords($originNumber);
@@ -114,7 +110,11 @@ class Transformer
      */
     protected function resolve($number): array
     {
-        $number += 0; // trick xóa các số 0 lẻ sau cùng của phân số
+        if (! is_numeric($number)) {
+            throw new InvalidArgumentException(sprintf('Number arg (`%s`) must be numeric!', $number));
+        }
+
+        $number += 0; // trick xóa các số 0 lẻ sau cùng của phân số và xử lý kiểu số âm hoặc dương đối với input là chuỗi.
         $number = (string) $number;
         $minus = '-' === $number[0];
 
