@@ -4,15 +4,19 @@
     </a>
     <h1 align="center">Number To Words</h1>
     <br>
+    <p align="center">
+    <a href="https://packagist.org/packages/phpviet/number-to-words"><img src="https://img.shields.io/packagist/v/phpviet/number-to-words.svg?style=flat-square" alt="Latest version"></a>
+    <a href="https://travis-ci.org/phpviet/number-to-words"><img src="https://img.shields.io/travis/phpviet/number-to-words/master.svg?style=flat-square" alt="Build status"></a>
+    <a href="https://scrutinizer-ci.com/g/phpviet/number-to-words"><img src="https://img.shields.io/scrutinizer/g/phpviet/number-to-words.svg?style=flat-square" alt="Quantity score"></a>
+    <a href="https://styleci.io/repos/189439149"><img src="https://styleci.io/repos/189439149/shield?branch=master" alt="StyleCI"></a>
+    <a href="https://packagist.org/packages/phpviet/number-to-words"><img src="https://img.shields.io/packagist/dt/phpviet/number-to-words.svg?style=flat-square" alt="Total download"></a>
+    <a href="https://packagist.org/packages/phpviet/number-to-words"><img src="https://img.shields.io/packagist/l/phpviet/number-to-words.svg?style=flat-square" alt="License"></a>
+    </p>
 </p>
 
-Thư viện hổ trợ chuyển đổi số sang chữ số Tiếng Việt.
+## Thông tin
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/phpviet/number-to-words.svg?style=flat-square)](https://packagist.org/packages/phpviet/number-to-words)
-[![Build Status](https://img.shields.io/travis/phpviet/number-to-words/master.svg?style=flat-square)](https://travis-ci.org/phpviet/number-to-words)
-[![Quality Score](https://img.shields.io/scrutinizer/g/phpviet/number-to-words.svg?style=flat-square)](https://scrutinizer-ci.com/g/phpviet/number-to-words)
-[![StyleCI](https://styleci.io/repos/189439149/shield?branch=master)](https://styleci.io/repos/189439149)
-[![Total Downloads](https://img.shields.io/packagist/dt/phpviet/number-to-words.svg?style=flat-square)](https://packagist.org/packages/phpviet/number-to-words)
+Thư viện hổ trợ chuyển đổi số sang chữ số Tiếng Việt.
 
 ## Cài đặt
 
