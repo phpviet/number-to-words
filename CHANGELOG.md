@@ -2,6 +2,10 @@
 
 Tất cả lịch sử tiến trình phát triển thư viện
 
+# 1.0.5
+
+- Thêm concern `NumberResolver`.
+
 # 1.0.4
 
 - Cập nhật verify input tại phương thức `resolve` của lớp `Transfomer`.

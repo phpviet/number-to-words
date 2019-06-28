@@ -7,18 +7,15 @@
 
 namespace PHPViet\NumberToWords;
 
-use InvalidArgumentException;
-use PHPViet\NumberToWords\Concerns\TripletsConverter;
-use PHPViet\NumberToWords\Concerns\TripletTransformer;
-
 /**
  * @author Vuong Minh <vuongxuongminh@gmail.com>
  * @since 1.0.0
  */
 class Transformer
 {
-    use TripletsConverter;
-    use TripletTransformer;
+    use Concerns\NumberResolver;
+    use Concerns\TripletsConverter;
+    use Concerns\TripletTransformer;
 
     /**
      * @var DictionaryInterface
@@ -28,7 +25,7 @@ class Transformer
     /**
      * Tạo đối tượng mới với từ điển chỉ định.
      *
-     * @param DictionaryInterface $dictionary
+     * @param  DictionaryInterface  $dictionary
      */
     public function __construct(?DictionaryInterface $dictionary = null)
     {
@@ -42,12 +39,12 @@ class Transformer
     /**
      * Chuyển đổi số sang chữ số.
      *
-     * @param int|float|string $number
+     * @param  int|float|string  $number
      * @return string
      */
     public function toWords($number): string
     {
-        [$minus, $number, $decimal] = $this->resolve($number);
+        [$minus, $number, $decimal] = $this->resolveNumber($number);
         $words = [];
         $words[] = $minus ? $this->dictionary->minus() : '';
 
@@ -77,14 +74,14 @@ class Transformer
      * Chuyển đổi số sang chữ số kết hợp với đơn vị tiền tệ.
      *
      * @param $number
-     * @param array|string[]|string $unit
+     * @param  array|string[]|string  $unit
      * @return string
      */
     public function toCurrency($number, $unit = 'đồng'): string
     {
         $unit = (array) $unit;
         $originNumber = $number;
-        [$minus, $number, $decimal] = $this->resolve($number);
+        [$minus, $number, $decimal] = $this->resolveNumber($number);
         $words = [];
 
         if (0 === $decimal || ! isset($unit[1])) {
@@ -105,26 +102,13 @@ class Transformer
     /**
      * Chia số truyền vào thành mảng bao gồm kiểu số âm hoặc dương, số nguyên và phân số.
      *
-     * @param int|float|string $number
+     * @param $number
      * @return array
+     * @deprecated since 1.0.5 use [[resolveNumber()]] instead and it will be remove since 1.1.0.
      */
     protected function resolve($number): array
     {
-        if (! is_numeric($number)) {
-            throw new InvalidArgumentException(sprintf('Number arg (`%s`) must be numeric!', $number));
-        }
-
-        $number += 0; // trick xóa các số 0 lẻ sau cùng của phân số và xử lý kiểu số âm hoặc dương đối với input là chuỗi.
-        $number = (string) $number;
-        $minus = '-' === $number[0];
-
-        if (false !== strpos($number, '.')) {
-            $numbers = explode('.', $number, 2);
-        } else {
-            $numbers = [$number, 0];
-        }
-
-        return array_merge([$minus], array_map('abs', $numbers));
+        return $this->resolveNumber($number);
     }
 
     /**
