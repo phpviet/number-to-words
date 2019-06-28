@@ -41,6 +41,7 @@ class Transformer
      *
      * @param  int|float|string  $number
      * @return string
+     * @throws \InvalidArgumentException
      */
     public function toWords($number): string
     {
@@ -76,6 +77,7 @@ class Transformer
      * @param $number
      * @param  array|string[]|string  $unit
      * @return string
+     * @throws \InvalidArgumentException
      */
     public function toCurrency($number, $unit = 'đồng'): string
     {

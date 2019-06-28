@@ -20,6 +20,7 @@ trait NumberResolver
      *
      * @param  int|float|string  $number
      * @return array
+     * @throws InvalidArgumentException
      */
     protected function resolveNumber($number): array
     {
