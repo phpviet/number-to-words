@@ -2,6 +2,11 @@
 
 Tất cả lịch sử tiến trình phát triển thư viện
 
+# 1.1.0
+
+- Xóa phương thức `resolve` trong `Transfomer`.
+- Tổ chức lại cấu trúc code.
+
 # 1.0.5
 
 - Thêm concern `NumberResolver`.

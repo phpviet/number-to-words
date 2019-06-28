@@ -100,18 +100,6 @@ class Transformer
     }
 
     /**
-     * Chia số truyền vào thành mảng bao gồm kiểu số âm hoặc dương, số nguyên và phân số.
-     *
-     * @param $number
-     * @return array
-     * @deprecated since 1.0.5 use [[resolveNumber()]] instead and it will be remove since 1.1.0.
-     */
-    protected function resolve($number): array
-    {
-        return $this->resolveNumber($number);
-    }
-
-    /**
      * {@inheritdoc}
      */
     protected function getDictionary(): DictionaryInterface
