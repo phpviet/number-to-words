@@ -13,6 +13,7 @@ namespace PHPViet\NumberToWords;
  */
 class Transformer
 {
+    use Concerns\Collapse;
     use Concerns\NumberResolver;
     use Concerns\TripletsConverter;
     use Concerns\TripletTransformer;
@@ -46,12 +47,9 @@ class Transformer
     public function toWords($number): string
     {
         [$minus, $number, $decimal] = $this->resolveNumber($number);
-        $words = [];
         $words[] = $minus ? $this->dictionary->minus() : '';
 
-        if (0 === $number && 0 === $decimal) {
-            return $this->dictionary->zero();
-        } elseif (0 === $number) {
+        if (0 === $number) {
             $words[] = $this->dictionary->zero();
         }
 
@@ -68,7 +66,7 @@ class Transformer
             $words[] = $this->toWords($decimal);
         }
 
-        return implode($this->dictionary->separator(), array_filter($words));
+        return $this->collapseWords($words);
     }
 
     /**
@@ -84,7 +82,6 @@ class Transformer
         $unit = (array) $unit;
         $originNumber = $number;
         [$minus, $number, $decimal] = $this->resolveNumber($number);
-        $words = [];
 
         if (0 === $decimal || ! isset($unit[1])) {
             $words[] = $this->toWords($originNumber);
@@ -98,14 +95,6 @@ class Transformer
             $words[] = $decimalUnit;
         }
 
-        return implode($this->dictionary->separator(), array_filter($words));
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function getDictionary(): DictionaryInterface
-    {
-        return $this->dictionary;
+        return $this->collapseWords($words);
     }
 }

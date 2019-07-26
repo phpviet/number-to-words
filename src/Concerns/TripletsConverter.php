@@ -21,13 +21,13 @@ trait TripletsConverter
      */
     protected function numberToTriplets(int $number): array
     {
-        $result = [];
+        $triplets = [];
 
         while (0 < $number) {
-            array_unshift($result, $number % 1000);
+            array_unshift($triplets, $number % 1000);
             $number = (int) ($number / 1000);
         }
 
-        return $result;
+        return $triplets;
     }
 }

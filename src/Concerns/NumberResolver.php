@@ -28,7 +28,7 @@ trait NumberResolver
             throw new InvalidArgumentException(sprintf('Number arg (`%s`) must be numeric!', $number));
         }
 
-        $number += 0; // trick xóa các số 0 lẻ sau cùng của phân số và xử lý kiểu số âm hoặc dương đối với input là chuỗi.
+        $number += 0; // trick xóa các số 0 lẻ sau cùng của phân số đối với input là chuỗi.
         $number = (string) $number;
         $minus = '-' === $number[0];
 
