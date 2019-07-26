@@ -2,6 +2,11 @@
 
 Tất cả lịch sử tiến trình phát triển thư viện
 
+# 1.2.0
+
+- Xóa phương thức trừu tượng `getDictionary` trong `Concerns\TripletTransformer`.
+- Tổ chức lại cấu trúc code.
+
 # 1.1.0
 
 - Xóa phương thức `resolve` trong `Transfomer`.
