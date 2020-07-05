@@ -24,7 +24,8 @@
     "autoload": {
         "psr-4": {
             "PHPViet\\NumberToWords\\": "src"
-        }
+        },
+        "files": ["src\\Helper\\Transformer.php"]
     },
     "autoload-dev": {
         "psr-4": {
