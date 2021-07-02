@@ -7,9 +7,9 @@
 
 namespace PHPViet\NumberToWords\Tests;
 
-use PHPViet\NumberToWords\Transformer;
-use PHPViet\NumberToWords\SouthDictionary;
 use PHPUnit\Framework\TestCase as BaseTestCase;
+use PHPViet\NumberToWords\SouthDictionary;
+use PHPViet\NumberToWords\Transformer;
 
 /**
  * @author Vuong Minh <vuongxuongminh@gmail.com>
