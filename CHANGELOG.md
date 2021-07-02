@@ -2,6 +2,10 @@
 
 Tất cả lịch sử tiến trình phát triển thư viện
 
+# 1.2.1
+
+- Hổ trợ PHP8.
+
 # 1.2.0
 
 - Xóa phương thức trừu tượng `getDictionary` trong `Concerns\TripletTransformer`.
