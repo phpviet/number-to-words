@@ -37,6 +37,32 @@ class NumberTest extends TestCase
         $this->assertEquals($expect, $this->transformer->toWords($float));
     }
 
+    /**
+     * @dataProvider decimalPartDataProvider
+     */
+    public function testSetDecimalPart($expect, $float, $decimal_part)
+    {
+        $this->assertEquals($expect, $this->transformer->setDecimalPart($decimal_part)->toWords($float));
+    }
+
+    public function decimalPartDataProvider(): array
+    {
+        return [
+            ['không', 0, 1],
+            ['một nghìn', 1000, 2],
+            ['một nghìn không trăm linh một', 1001, 3],
+            ['một nghìn không trăm linh hai', 1002, 4],
+            ['âm không phẩy mười', -0.1, 2],
+            ['âm chín mươi chín', -99, 3],
+            ['âm chín mươi tám', -98, 4],
+            ['không phẩy ba trăm bảy mươi chín', 0.378758, 3],
+            ['không phẩy chín mươi hai', 0.922174, 2],
+            ['năm trăm bảy mươi ba phẩy năm mươi tám', 573.58, 2],
+            ['sáu trăm sáu mươi chín phẩy mười bốn', 669.135, 2],
+            ['ba trăm chín mươi lăm phẩy mười bốn', 395.136, 2],
+        ];
+    }
+
     public function fractionDataProvider(): array
     {
         return [

@@ -22,14 +22,19 @@ trait NumberResolver
      * @return array
      * @throws InvalidArgumentException
      */
-    protected function resolveNumber($number): array
+    protected function resolveNumber($number, $decimal_part = -1): array
     {
         if (! is_numeric($number)) {
             throw new InvalidArgumentException(sprintf('Number arg (`%s`) must be numeric!', $number));
         }
 
-        $number += 0; // trick xóa các số 0 lẻ sau cùng của phân số đối với input là chuỗi.
-        $number = (string) $number;
+
+        if($decimal_part === -1) {
+            $number += 0; // trick xóa các số 0 lẻ sau cùng của phân số đối với input là chuỗi.
+            $number = (string) $number;
+        } else {
+            $number = number_format($number, $decimal_part, ".", "");
+        }
         $minus = '-' === $number[0];
 
         if (false !== strpos($number, '.')) {
