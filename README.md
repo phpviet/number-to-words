@@ -118,6 +118,21 @@ $transformer->toCurrency(95500200);
 $transformer->toCurrency(854000900);
 
 ```
+Trong một số loại tiền tệ, bạn cần thay đổi cách đọc theo đơn vị quy đổi, ví dụ 1 đô = 100 xen
+```php
+use PHPViet\NumberToWords\Transformer;
+
+$transformer = new Transformer();
+
+// Đặt số chữ số phần thập phân
+$transformer->setDecimalPart(2); 
+
+// năm mươi sáu đô chín mươi xen, thay vì năm mươi sáu đô chín xen
+$transformer->toCurrency(56.90);
+
+// Hoặc đơn giản
+$transformer->setDecimalPart(2)->toCurrency(56.90);
+```
 
 Ngoài ra ta còn có thể sử dụng đơn vị tiền tệ khác thông qua tham trị thứ 2 của phương thức
 `toCurrency`, với mảng phần từ đầu tiên là đơn vị cho số nguyên và kế tiếp là đơn vị của phân số:
