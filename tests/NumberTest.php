@@ -7,6 +7,8 @@
 
 namespace PHPViet\NumberToWords\Tests;
 
+use PHPViet\NumberToWords\Transformer;
+
 /**
  * @author Vuong Minh <vuongxuongminh@gmail.com>
  * @since 1.0.0
@@ -42,7 +44,9 @@ class NumberTest extends TestCase
      */
     public function testSetDecimalPart($expect, $float, $decimal_part)
     {
-        $this->assertEquals($expect, $this->transformer->setDecimalPart($decimal_part)->toWords($float));
+        $transformer =  new Transformer($this->dictionary, $decimal_part);
+
+        $this->assertEquals($expect, $transformer->toWords($float));
     }
 
     public function decimalPartDataProvider(): array

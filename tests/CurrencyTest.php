@@ -7,6 +7,8 @@
 
 namespace PHPViet\NumberToWords\Tests;
 
+use PHPViet\NumberToWords\Transformer;
+
 /**
  * @author Vuong Minh <vuongxuongminh@gmail.com>
  * @since 1.0.0
@@ -34,7 +36,9 @@ class CurrencyTest extends TestCase
      */
     public function testUSDSetDecimalPart($expect, $float, $decimal_part)
     {
-        $this->assertEquals($expect, $this->transformer->setDecimalPart($decimal_part)->toCurrency($float, ['đô', 'xen']));
+        $transformer =  new Transformer($this->dictionary, $decimal_part);
+
+        $this->assertEquals($expect, $transformer->toCurrency($float, ['đô', 'xen']));
     }
 
     public function usdDecimalPartDataProvider(): array
@@ -60,7 +64,8 @@ class CurrencyTest extends TestCase
      */
     public function testSetDecimalPart($expect, $float, $decimal_part)
     {
-        $this->assertEquals($expect, $this->transformer->setDecimalPart($decimal_part)->toCurrency($float));
+        $transformer =  new Transformer($this->dictionary, $decimal_part);
+        $this->assertEquals($expect, $transformer->toCurrency($float));
     }
 
     public function decimalPartDataProvider(): array

@@ -122,16 +122,11 @@ Trong một số loại tiền tệ, bạn cần thay đổi cách đọc theo �
 ```php
 use PHPViet\NumberToWords\Transformer;
 
-$transformer = new Transformer();
-
-// Đặt số chữ số phần thập phân
-$transformer->setDecimalPart(2); 
+// Đặt số chữ số phần thập phân (tham số đầu tiên Dictionary có thể null)
+$transformer = new Transformer(null, 2);
 
 // năm mươi sáu đô chín mươi xen, thay vì năm mươi sáu đô chín xen
 $transformer->toCurrency(56.90);
-
-// Hoặc đơn giản
-$transformer->setDecimalPart(2)->toCurrency(56.90);
 ```
 
 Ngoài ra ta còn có thể sử dụng đơn vị tiền tệ khác thông qua tham trị thứ 2 của phương thức

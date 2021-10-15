@@ -19,33 +19,29 @@ class Transformer
     use Concerns\TripletTransformer;
 
     /**
-     * @const int
-     */
-    const DEFAULT_DECIMAL_PART = -1;
-
-    /**
      * @var DictionaryInterface
      */
     protected $dictionary;
 
     /**
-     * Mặc định bỏ số các số 0 sau phần thập phân
+     * Mặc định bỏ số các số 0 sau phần thập phân.
      * @var int
      */
-    protected $decimal_part = self::DEFAULT_DECIMAL_PART;
+    protected $decimalPart;
 
     /**
-     * Tạo đối tượng mới với từ điển chỉ định.
+     * Tạo đối tượng mới với từ điển chỉ định và phần thập phân.
      *
      * @param  DictionaryInterface  $dictionary
      */
-    public function __construct(?DictionaryInterface $dictionary = null)
+    public function __construct(?DictionaryInterface $dictionary = null, $decimalPart = null)
     {
         if (null === $dictionary) {
             $dictionary = new Dictionary();
         }
 
         $this->dictionary = $dictionary;
+        $this->decimalPart = $decimalPart;
     }
 
     /**
@@ -57,7 +53,7 @@ class Transformer
      */
     public function toWords($number): string
     {
-        [$minus, $number, $decimal] = $this->resolveNumber($number, $this->decimal_part);
+        [$minus, $number, $decimal] = $this->resolveNumber($number, $this->decimalPart);
         $words[] = $minus ? $this->dictionary->minus() : '';
 
         if (0 === $number) {
@@ -92,7 +88,7 @@ class Transformer
     {
         $unit = (array) $unit;
         $originNumber = $number;
-        [$minus, $number, $decimal] = $this->resolveNumber($number, $this->decimal_part);
+        [$minus, $number, $decimal] = $this->resolveNumber($number, $this->decimalPart);
 
         if (0 === $decimal || ! isset($unit[1])) {
             $words[] = $this->toWords($originNumber);
@@ -107,12 +103,5 @@ class Transformer
         }
 
         return $this->collapseWords($words);
-    }
-
-    public function setDecimalPart($decimal_part)
-    {
-        $this->decimal_part = $decimal_part;
-
-        return $this;
     }
 }
