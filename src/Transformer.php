@@ -53,7 +53,7 @@ class Transformer
      */
     public function toWords($number): string
     {
-        [$minus, $number, $decimal] = $this->resolveNumber($number, $this->decimalPart);
+        [$minus, $number, $decimal] = $this->resolveNumber($number);
         $words[] = $minus ? $this->dictionary->minus() : '';
 
         if (0 === $number) {
@@ -88,7 +88,7 @@ class Transformer
     {
         $unit = (array) $unit;
         $originNumber = $number;
-        [$minus, $number, $decimal] = $this->resolveNumber($number, $this->decimalPart);
+        [$minus, $number, $decimal] = $this->resolveNumber($number);
 
         if (0 === $decimal || ! isset($unit[1])) {
             $words[] = $this->toWords($originNumber);
