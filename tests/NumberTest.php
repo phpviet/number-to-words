@@ -42,9 +42,9 @@ class NumberTest extends TestCase
     /**
      * @dataProvider decimalPartDataProvider
      */
-    public function testSetDecimalPart($expect, $float, $decimal_part)
+    public function testSetDecimalPart($expect, $float, $decimalPart)
     {
-        $transformer =  new Transformer($this->dictionary, $decimal_part);
+        $transformer =  new Transformer($this->dictionary, $decimalPart);
 
         $this->assertEquals($expect, $transformer->toWords($float));
     }

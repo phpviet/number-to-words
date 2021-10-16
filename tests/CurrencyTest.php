@@ -34,9 +34,9 @@ class CurrencyTest extends TestCase
     /**
      * @dataProvider usdDecimalPartDataProvider
      */
-    public function testUSDSetDecimalPart($expect, $float, $decimal_part)
+    public function testUSDSetDecimalPart($expect, $float, $decimalPart)
     {
-        $transformer =  new Transformer($this->dictionary, $decimal_part);
+        $transformer =  new Transformer($this->dictionary, $decimalPart);
 
         $this->assertEquals($expect, $transformer->toCurrency($float, ['đô', 'xen']));
     }
@@ -62,9 +62,9 @@ class CurrencyTest extends TestCase
     /**
      * @dataProvider decimalPartDataProvider
      */
-    public function testSetDecimalPart($expect, $float, $decimal_part)
+    public function testSetDecimalPart($expect, $float, $decimalPart)
     {
-        $transformer =  new Transformer($this->dictionary, $decimal_part);
+        $transformer =  new Transformer($this->dictionary, $decimalPart);
         $this->assertEquals($expect, $transformer->toCurrency($float));
     }
 
