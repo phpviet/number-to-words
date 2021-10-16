@@ -1,6 +1,7 @@
 <?php
 /**
  * @link https://github.com/phpviet/number-to-words
+ *
  * @copyright (c) PHP Viet
  * @license [MIT](http://www.opensource.org/licenses/MIT)
  */
@@ -11,6 +12,7 @@ use PHPViet\NumberToWords\Transformer;
 
 /**
  * @author Vuong Minh <vuongxuongminh@gmail.com>
+ *
  * @since 1.0.0
  */
 class NumberTest extends TestCase
@@ -44,7 +46,7 @@ class NumberTest extends TestCase
      */
     public function testSetDecimalPart($expect, $float, $decimalPart)
     {
-        $transformer =  new Transformer($this->dictionary, $decimalPart);
+        $transformer = new Transformer($this->dictionary, $decimalPart);
 
         $this->assertEquals($expect, $transformer->toWords($float));
     }
