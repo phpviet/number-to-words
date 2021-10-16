@@ -1,6 +1,7 @@
 <?php
 /**
  * @link https://github.com/phpviet/number-to-words
+ *
  * @copyright (c) PHP Viet
  * @license [MIT](http://www.opensource.org/licenses/MIT)
  */
@@ -9,6 +10,7 @@ namespace PHPViet\NumberToWords;
 
 /**
  * @author Vuong Minh <vuongxuongminh@gmail.com>
+ *
  * @since 1.0.0
  */
 class Transformer
@@ -25,6 +27,7 @@ class Transformer
 
     /**
      * Mặc định bỏ số các số 0 sau phần thập phân.
+     *
      * @var int
      */
     protected $decimalPart;
@@ -49,6 +52,7 @@ class Transformer
      *
      * @param  int|float|string  $number
      * @return string
+     *
      * @throws \InvalidArgumentException
      */
     public function toWords($number): string
@@ -82,6 +86,7 @@ class Transformer
      * @param $number
      * @param  array|string[]|string  $unit
      * @return string
+     *
      * @throws \InvalidArgumentException
      */
     public function toCurrency($number, $unit = 'đồng'): string

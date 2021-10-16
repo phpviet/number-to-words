@@ -1,6 +1,7 @@
 <?php
 /**
  * @link https://github.com/phpviet/number-to-words
+ *
  * @copyright (c) PHP Viet
  * @license [MIT](http://www.opensource.org/licenses/MIT)
  */
@@ -9,6 +10,7 @@ namespace PHPViet\NumberToWords;
 
 /**
  * @author Vuong Minh <vuongxuongminh@gmail.com>
+ *
  * @since 1.0.0
  */
 interface DictionaryInterface
@@ -72,7 +74,7 @@ interface DictionaryInterface
     /**
      * Trả về từ ngữ hàng đơn vị tương ứng với số truyền vào.
      *
-     * @param int $unit hàng đơn vị
+     * @param  int  $unit  hàng đơn vị
      * @return string
      */
     public function getTripletUnit(int $unit): string;
@@ -80,7 +82,7 @@ interface DictionaryInterface
     /**
      * Trả về từ ngữ hàng chục tương ứng với số truyền vào.
      *
-     * @param int $ten hàng chục
+     * @param  int  $ten  hàng chục
      * @return string
      */
     public function getTripletTen(int $ten): string;
@@ -88,7 +90,7 @@ interface DictionaryInterface
     /**
      * Trả về từ ngữ hàng trăm tương ứng với số truyền vào.
      *
-     * @param int $hundred hàng trăm
+     * @param  int  $hundred  hàng trăm
      * @return string
      */
     public function getTripletHundred(int $hundred): string;
@@ -96,7 +98,7 @@ interface DictionaryInterface
     /**
      * Trả về đơn vị tương ứng với số mũ cơ số 3.
      *
-     * @param int $power hàng trăm
+     * @param  int  $power  hàng trăm
      * @return string
      */
     public function getExponent(int $power): string;

@@ -1,6 +1,7 @@
 <?php
 /**
  * @link https://github.com/phpviet/number-to-words
+ *
  * @copyright (c) PHP Viet
  * @license [MIT](http://www.opensource.org/licenses/MIT)
  */
@@ -11,6 +12,7 @@ use InvalidArgumentException;
 
 /**
  * @author Vuong Minh <vuongxuongminh@gmail.com>
+ *
  * @since 1.0.5
  */
 trait NumberResolver
@@ -20,6 +22,7 @@ trait NumberResolver
      *
      * @param  int|float|string  $number
      * @return array
+     *
      * @throws InvalidArgumentException
      */
     protected function resolveNumber($number): array
@@ -27,7 +30,6 @@ trait NumberResolver
         if (! is_numeric($number)) {
             throw new InvalidArgumentException(sprintf('Number arg (`%s`) must be numeric!', $number));
         }
-
 
         if ($this->decimalPart === null) {
             $number += 0; // trick xóa các số 0 lẻ sau cùng của phân số đối với input là chuỗi.
