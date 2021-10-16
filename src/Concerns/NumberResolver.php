@@ -28,8 +28,13 @@ trait NumberResolver
             throw new InvalidArgumentException(sprintf('Number arg (`%s`) must be numeric!', $number));
         }
 
-        $number += 0; // trick xóa các số 0 lẻ sau cùng của phân số đối với input là chuỗi.
-        $number = (string) $number;
+
+        if ($this->decimalPart === null) {
+            $number += 0; // trick xóa các số 0 lẻ sau cùng của phân số đối với input là chuỗi.
+            $number = (string) $number;
+        } else {
+            $number = number_format($number, $this->decimalPart, '.', '');
+        }
         $minus = '-' === $number[0];
 
         if (false !== strpos($number, '.')) {

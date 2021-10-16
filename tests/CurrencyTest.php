@@ -7,6 +7,8 @@
 
 namespace PHPViet\NumberToWords\Tests;
 
+use PHPViet\NumberToWords\Transformer;
+
 /**
  * @author Vuong Minh <vuongxuongminh@gmail.com>
  * @since 1.0.0
@@ -27,6 +29,61 @@ class CurrencyTest extends TestCase
     public function testUSDTransform($expect, $number)
     {
         $this->assertEquals($expect, $this->transformer->toCurrency($number, ['đô', 'xen']));
+    }
+
+    /**
+     * @dataProvider usdDecimalPartDataProvider
+     */
+    public function testUSDSetDecimalPart($expect, $float, $decimalPart)
+    {
+        $transformer =  new Transformer($this->dictionary, $decimalPart);
+
+        $this->assertEquals($expect, $transformer->toCurrency($float, ['đô', 'xen']));
+    }
+
+    public function usdDecimalPartDataProvider(): array
+    {
+        return [
+            ['không đô', 0, 1],
+            ['một nghìn đô', 1000, 2],
+            ['một nghìn không trăm linh một đô', 1001, 3],
+            ['một nghìn không trăm linh hai đô', 1002, 4],
+            ['âm không đô mười xen', -0.1, 2],
+            ['âm chín mươi chín đô', -99, 3],
+            ['âm chín mươi tám đô', -98, 4],
+            ['không đô ba trăm bảy mươi chín xen', 0.378758, 3],
+            ['không đô chín mươi hai xen', 0.922174, 2],
+            ['năm trăm bảy mươi ba đô năm mươi tám xen', 573.58, 2],
+            ['sáu trăm sáu mươi chín đô mười bốn xen', 669.135, 2],
+            ['ba trăm chín mươi lăm đô mười bốn xen', 395.136, 2],
+        ];
+    }
+
+    /**
+     * @dataProvider decimalPartDataProvider
+     */
+    public function testSetDecimalPart($expect, $float, $decimalPart)
+    {
+        $transformer =  new Transformer($this->dictionary, $decimalPart);
+        $this->assertEquals($expect, $transformer->toCurrency($float));
+    }
+
+    public function decimalPartDataProvider(): array
+    {
+        return [
+            ['không đồng', 0, 1],
+            ['một nghìn đồng', 1000, 2],
+            ['một nghìn không trăm linh một đồng', 1001, 3],
+            ['một nghìn không trăm linh hai đồng', 1002, 4],
+            ['âm không phẩy mười đồng', -0.1, 2],
+            ['âm chín mươi chín đồng', -99, 3],
+            ['âm chín mươi tám đồng', -98, 4],
+            ['không phẩy ba trăm bảy mươi chín đồng', 0.378758, 3],
+            ['không phẩy chín mươi hai đồng', 0.922174, 2],
+            ['năm trăm bảy mươi ba phẩy năm mươi tám đồng', 573.58, 2],
+            ['sáu trăm sáu mươi chín phẩy mười bốn đồng', 669.135, 2],
+            ['ba trăm chín mươi lăm phẩy mười bốn đồng', 395.136, 2],
+        ];
     }
 
     public function usdDataProvider(): array

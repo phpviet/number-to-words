@@ -24,17 +24,24 @@ class Transformer
     protected $dictionary;
 
     /**
-     * Tạo đối tượng mới với từ điển chỉ định.
+     * Mặc định bỏ số các số 0 sau phần thập phân.
+     * @var int
+     */
+    protected $decimalPart;
+
+    /**
+     * Tạo đối tượng mới với từ điển chỉ định và phần thập phân.
      *
      * @param  DictionaryInterface  $dictionary
      */
-    public function __construct(?DictionaryInterface $dictionary = null)
+    public function __construct(?DictionaryInterface $dictionary = null, $decimalPart = null)
     {
         if (null === $dictionary) {
             $dictionary = new Dictionary();
         }
 
         $this->dictionary = $dictionary;
+        $this->decimalPart = $decimalPart;
     }
 
     /**

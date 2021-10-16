@@ -2,6 +2,10 @@
 
 Tất cả lịch sử tiến trình phát triển thư viện
 
+# 1.3.0
+
+- Cho phép thay đổi cách đọc phần thập phân.
+
 # 1.2.1
 
 - Hổ trợ PHP8.
